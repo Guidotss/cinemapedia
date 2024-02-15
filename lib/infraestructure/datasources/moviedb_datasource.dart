@@ -19,7 +19,7 @@ class MovieDbDataSource implements MoviesDataSource {
     final movieDbResponse = MovieDbResponse.fromJson(response.data);
 
     final List<Movie> movies = movieDbResponse.results
-        .where((movie) => movie.posterPath != 'no-poster')
+        .where((movie) => movie.posterPath != 'no-poster' && movie.backdropPath != 'no-poster')
         .map((movie) => MovieMapper.movieDbToEntity(movie))
         .toList();
 
