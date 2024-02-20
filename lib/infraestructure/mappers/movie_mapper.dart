@@ -1,4 +1,5 @@
 import 'package:cinemapedia/domain/entities/movie.dart';
+import 'package:cinemapedia/infraestructure/models/moviedb/movie_details.dart';
 import 'package:cinemapedia/infraestructure/models/moviedb/movie_moviedb.dart';
 
 class MovieMapper {
@@ -22,4 +23,25 @@ class MovieMapper {
       voteAverage: moviedb.voteAverage,
       voteCount: moviedb.voteCount
     );
+
+  static Movie movieDetailsToEntity(MovieDetails movie) => Movie(
+      adult: movie.adult,
+      backdropPath: (movie.backdropPath != '') 
+        ? 'https://image.tmdb.org/t/p/w500${movie.backdropPath}'
+        : 'https://static.wikia.nocookie.net/lotr/images/4/4e/Noimage.jpg',
+      genreIds: movie.genres.map((item) => item.name).toList(),
+      id: movie.id,
+      originalLanguage: movie.originalLanguage,
+      originalTitle: movie.originalTitle,
+      overview: movie.overview,
+      popularity: movie.popularity,
+      posterPath: (movie.posterPath != '') 
+        ? 'https://image.tmdb.org/t/p/w500${movie.posterPath}'
+        : 'https://static.wikia.nocookie.net/lotr/images/4/4e/Noimage.jpg',
+      releaseDate: movie.releaseDate,
+      title: movie.title,
+      video: movie.video,
+      voteAverage: movie.voteAverage,
+      voteCount: movie.voteCount
+  ); 
 }
