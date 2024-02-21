@@ -21,7 +21,7 @@ class ActorMovieDbDatasource implements ActorsDataSource {
     List<Actor> actors = castResponse.cast
         .map((cast) => ActorMapper.castToEntity(cast))
         .toList();
-
+        
     return actors;
   }
 }

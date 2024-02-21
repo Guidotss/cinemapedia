@@ -21,6 +21,7 @@ class ActorsByMovieNotifier extends StateNotifier<Map<String, List<Actor>>> {
     if (state[movieId] != null) return;
     final actors = await getActorsByMovie(movieId);
 
+
     state = {
       ...state,
       movieId: actors,
